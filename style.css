@@ -1,0 +1,155 @@
+
+
+/*Google Front*/
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'PT Sans', sans-serif;
+}
+
+
+html,body{
+  display: grid;
+  height: 100%;
+  text-align: center;
+  place-items: center;
+  background: #ff704d;    /* change here color of background */
+}
+
+
+.circle_center{
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+.circle_center .inner, .circle_center .outer, .circle_center .circle{
+  position: absolute;
+  z-index: 6;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.2);
+}
+
+
+.circle_center .inner{
+  top: 50%;
+  left: 50%;
+  height: 80px;
+  width: 80px;
+  margin: -40px 0 0 -40px;
+  background-color: #004466;    /* change here color of circular center */
+  border-radius: 100%;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+
+.circle_center .circle{
+  z-index: 1;
+  box-shadow: none;
+}
+
+
+.circle_center .numb{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: 20px;
+  font-weight: bold;
+  color: #33ccff;       /* change here color of Number text */
+}
+
+
+.circle_center .bar{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #fff;      /* change here color of progressive area */
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 100px, 100px, 50px);
+}
+
+
+.circle .bar .progress{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 50px, 100px, 0px);
+}
+
+
+.circle .bar .progress, .dot span{
+  background: #33ccff;      /* change here color of dot circle */
+}
+
+
+
+.circle .left .progress{
+  z-index: 1;
+  animation: left 4s linear both;  /* change here progress time of (0%-50%) */
+}
+
+
+@keyframes left {
+  100%{
+    transform: rotate(180deg);   /* change here (0%-50%) */ 
+  }
+}
+.circle .right{
+  z-index: 3;
+  transform: rotate(180deg);
+}
+.circle .right .progress{
+  animation: right 1s linear both; /* change here progress time */
+  animation-delay: 4s;
+}
+@keyframes right {
+  100%{
+    transform: rotate(72deg); /* change here (51%-100%) */ 
+  }
+}
+
+
+.circle .dot{
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  height: 10px;
+  margin-top: -5px;
+  animation: dot 5s linear both;  /* change here progress time by plus (.circle .right .progress)+(.circle .left .progress)*/
+  transform-origin: 0% 50%;
+}
+
+.circle .dot span {
+  position: absolute;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+/* change here dot progress Percentage */
+
+@keyframes dot{
+  0% {
+    transform: rotate(-90deg);
+  }
+  80% {
+    transform: rotate(90deg); /* change here dot progress Percentage (0%-50%) */
+    z-index: 4;
+  }
+  100% {
+    transform: rotate(161deg);  /* change here dot progress Percentage (51%-100%) */
+    z-index: 4;
+  }
+}
